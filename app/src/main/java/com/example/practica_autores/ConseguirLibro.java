@@ -1,6 +1,7 @@
 package com.example.practica_autores;
 
 import android.os.AsyncTask;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import org.json.JSONArray;
@@ -11,12 +12,17 @@ import java.lang.ref.WeakReference;
 
 public class ConseguirLibro extends AsyncTask<String,Void,String> {
 
-    private WeakReference<TextView>  mTextoTitulo;
+    private WeakReference<TextView> mTextoTitulo;
     private WeakReference<TextView> mTextoAutor;
+    private WeakReference<TextView> mTextoAnio;
+    private WeakReference<TextView> mTextoDescripcion;
+    private WeakReference<ImageView> imgLibro;
 
-    ConseguirLibro(TextView tituloTexto, TextView autorTexto){
+    ConseguirLibro(TextView tituloTexto, TextView autorTexto, TextView anioLibro, TextView descripcionLibro){
         this.mTextoTitulo = new WeakReference<>(tituloTexto);
         this.mTextoAutor = new WeakReference<>(autorTexto);
+        this.mTextoAnio = new WeakReference<>(anioLibro);
+        this.mTextoDescripcion = new WeakReference<>(descripcionLibro);
     }
 
 
@@ -34,26 +40,28 @@ public class ConseguirLibro extends AsyncTask<String,Void,String> {
             int i=0;
             String titulo = null;
             String autores = null;
-            while (i < itemArray.length() && (autores == null && titulo == null)){
+            String anio = null;
+            String descripcion = null;
+            int foto = 0;
+            MainActivity.libros.clear();
+            for (i = 0; i < itemArray.length(); i++){
                 JSONObject libro = itemArray.getJSONObject(i);
                 JSONObject volumenInfo = libro.getJSONObject("volumeInfo");
                 try{
                     titulo = volumenInfo.getString("title");
                     autores = volumenInfo.getString("authors");
+                    anio = volumenInfo.getString("publishedDate");
+                    descripcion = volumenInfo.getString("description");
+                    MainActivity.libros.add(new Libro(titulo,autores,anio,descripcion));
                 }catch (Exception e){
-                    mTextoTitulo.get().setText("No existen resultados");
-                    mTextoAutor.get().setText("");
                     e.printStackTrace();
                 }
-                i++;
+
             }
 
             if(titulo != null && autores != null){
-                mTextoTitulo.get().setText(titulo);
-                mTextoAutor.get().setText(autores);
             }else{
-                mTextoTitulo.get().setText("No existen resultos");
-                mTextoAutor.get().setText("");
+
             }
 
         }catch (JSONException e){

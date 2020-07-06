@@ -31,7 +31,6 @@ public class UtilidadesRed {
                     .appendQueryParameter(PRINT_TYPE,"books")
                     .build();
             URL peticionURL = new URL(construirURI.toString());
-
             urlConnection = (HttpURLConnection)peticionURL.openConnection();
             urlConnection.setRequestMethod("GET");
             urlConnection.connect();
@@ -64,7 +63,6 @@ public class UtilidadesRed {
                 }
             }
         }
-        Log.d(LOG_TAG,libroJSON);
         return libroJSON;
     }
 }

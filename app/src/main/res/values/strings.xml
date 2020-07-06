@@ -3,4 +3,10 @@
     <string name="instrucciones">Ingrese el nombre del libro para conocer a su autor</string>
     <string name="textoBoton">Buscar</string>
     <string name="inputHint">Titulo del Libro</string>
+    <string name="titulo1">Libro</string>
+    <string name="titulo2">Detalle</string>
+    <string name="resultados">Resultados:</string>
+    <string name="adicional">Informacion adicional:</string>
+    <string name="vacio">Vacio</string>
+    <string name="descripcion">Descripcion:</string>
 </resources>
