@@ -1,7 +1,9 @@
 <resources>
-    <string name="app_name">Practica_Autores</string>
+    <string name="app_name">RecyclerView y SharedPreferences</string>
     <string name="instrucciones">Ingrese el nombre del libro para conocer a su autor</string>
+    <string name="action_settings">Cambiar Color</string>
     <string name="textoBoton">Buscar</string>
+    <string name="sp_color_bar">Color de Barra</string>
     <string name="inputHint">Titulo del Libro</string>
     <string name="titulo1">Libro</string>
     <string name="titulo2">Detalle</string>
